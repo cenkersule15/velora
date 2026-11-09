@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import {cars,initialFilters,filterCars,interpretSearch} from '../lib/cars.ts';
+import {words} from '../lib/words.ts';
+assert.equal(cars.length,8);assert.equal(new Set(cars.map(c=>c.id)).size,8);
+assert.equal(filterCars(cars,initialFilters).length,8);
+assert.equal(filterCars(cars,{...initialFilters,fuel:'electric'})[0].brand,'Tesla');
+assert.equal(filterCars(cars,{...initialFilters,maxPrice:100}).length,0);
+assert.equal(filterCars(cars,{...initialFilters,minYear:2023}).length,2);
+assert.equal(filterCars(cars,{...initialFilters,query:'İZMİR'}).length,2);
+assert.equal(filterCars(cars,interpretSearch('automatic BMW under 80k euro'))[0].brand,'BMW');
+assert.equal(interpretSearch('otomatik 2,5 milyon İstanbul').maxPrice,2500000);
+assert.equal(interpretSearch('BMW Automatik unter 3 Millionen').gear,'automatic');
+assert.equal(interpretSearch('900 bin').maxPrice,900000);
+assert.equal(filterCars(cars,{...initialFilters,body:'wagon'})[0].brand,'Audi');
+assert.equal(filterCars(cars,{...initialFilters,gear:'manual'}).length,0);
+for(const lang of ['en','de'])assert.deepEqual(Object.keys(words[lang]).sort(),Object.keys(words.tr).sort());
+for(const copy of Object.values(words))assert.ok(Object.values(copy).every(s=>typeof s==='string'&&s.trim().length>0));
+console.log('16 catalog/localisation checks passed.');
+
+assert.equal(filterCars(cars,{...initialFilters,body:'suv'}).length,2);
+assert.equal(filterCars(cars,interpretSearch('G-Class under 200k euro'))[0].id,'v007');
+assert.equal(filterCars(cars,interpretSearch('Defender unter 90.000 Euro'))[0].id,'v008');
+for (const q of ['80 bin euro','80k euro','80.000 Euro','80,000 EUR','80000 €']) assert.equal(interpretSearch(q).maxPrice,80000);
+assert.deepEqual(filterCars(cars,interpretSearch('automatic BMW under 50k euro')),[]);
+assert.ok(cars.every(c=>c.price>10000&&c.price<=250000));
+console.log('Euro budgets and SUV discovery checks passed.');
