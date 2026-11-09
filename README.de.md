@@ -21,7 +21,7 @@ VELORA ist ein mehrsprachiges Portfolio-Projekt von [Cenker Sule](https://github
 | Vergleich | Bis zu drei Fahrzeuge mit Preisen und technischen Daten nebeneinander |
 | Favoriten | Im aktuellen Browser gespeicherte Fahrzeuge |
 | Fahrzeugdetails | Ausstattung und interaktive Karosserieübersicht mit Beispielangaben |
-| Verkäuferbereich | Kontogebundene Inseratsentwürfe und Demo-Besichtigungsanfragen mit serverseitiger Speicherung |
+| Verkäuferbereich | An die Browsersitzung gebundene Inseratsentwürfe und Demo-Besichtigungsanfragen mit serverseitiger Speicherung |
 | Bedienung | Responsive Gestaltung, native Dialoge, Tastaturbedienung und reduzierte Bewegung |
 
 Katalogpreise werden in **EUR** angegeben. Es handelt sich um Demonstrationswerte, nicht um Live-Währungsumrechnungen oder Marktwertschätzungen. Neue Entwürfe speichern EUR ausdrücklich; ältere Entwürfe ohne Währungsfeld behalten ihre ursprüngliche TRY-Kennzeichnung.
@@ -50,7 +50,7 @@ Falls Node 24 auf macOS über Homebrew installiert wurde, lässt es sich für da
 export PATH="$(brew --prefix node@24)/bin:$PATH"
 ```
 
-Der lokale Anmeldelink erstellt eine **ausschließlich auf localhost verfügbare Demo-Sitzung** für einen simulierten Benutzer. Es werden weder ein echtes Konto noch ein Passwort benötigt. Entwürfe und Demo-Anfragen liegen in `.wrangler/state`, Favoriten im Browser. In gehosteten Umgebungen liefert die Hosting-Plattform die Identität. Den lokalen Demo-Anmeldeserver nicht öffentlich bereitstellen.
+Die lokale Demo verwendet ein browserspezifisches, signiertes HttpOnly-Sitzungscookie. Über die Demo-Schaltfläche starten. Jeder Browser hat eigene Einträge. Sitzungen enden nach 24 Stunden oder einem Serverneustart. Dies ist eine reine Localhost-Demo, kein produktives Kontosystem. Entwürfe bleiben in `.wrangler/state`, Favoriten im Browser.
 
 ## Prüfung
 

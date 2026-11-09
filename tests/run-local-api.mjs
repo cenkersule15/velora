@@ -1,5 +1,5 @@
 import {spawn} from 'node:child_process';
-const server=spawn(process.execPath,['scripts/run-framework.mjs','dev'],{stdio:['ignore','pipe','pipe'],detached:true});
+const server=spawn(process.execPath,['scripts/dev.mjs','dev'],{stdio:['ignore','pipe','pipe'],detached:true});
 let started=false;
 const timeout=setTimeout(()=>finish(1,'Local server did not start within 60 seconds'),60000);
 function finish(code,message){clearTimeout(timeout);if(message)console.log(message);try{process.kill(-server.pid,'SIGTERM')}catch{}process.exitCode=code;}

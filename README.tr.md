@@ -21,7 +21,7 @@ VELORA, [Cenker Sule](https://github.com/cenkersule15) tarafından geliştirilen
 | Karşılaştırma | En fazla üç aracın fiyat ve özelliklerini yan yana inceleme |
 | Favoriler | Kullanılan tarayıcıda saklanan araçlar |
 | Araç detayları | Donanımlar ve interaktif kaporta beyanı şeması |
-| Satıcı akışı | Hesaba bağlı ilan taslakları ve sunucuda saklanan demo randevu talepleri |
+| Satıcı akışı | Tarayıcı oturumuna bağlı ilan taslakları ve sunucuda saklanan demo randevu talepleri |
 | Kullanım | Duyarlı tasarım, native diyaloglar, klavye desteği ve azaltılmış hareket seçenekleri |
 
 Katalog fiyatları **EUR** cinsindedir. Tutarlar örnektir; canlı kur dönüşümü veya piyasa değerlemesi yapılmaz. Yeni taslaklar EUR bilgisiyle kaydedilir. Eski sürümlerde para birimi alanı olmadan oluşturulmuş TL taslakları, kendi TRY etiketiyle korunur.
@@ -50,7 +50,7 @@ macOS üzerinde Homebrew ile kurulu Node 24'ü mevcut terminalde seçmek için:
 export PATH="$(brew --prefix node@24)/bin:$PATH"
 ```
 
-Yerel giriş bağlantısı, tek bir örnek kullanıcı için **yalnızca localhost üzerinde çalışan demo oturumu** açar. Gerçek hesap veya şifre gerekmez. Taslaklar ve demo talepleri `.wrangler/state`, favoriler ise tarayıcı içinde saklanır. Barındırılan ortamlarda kullanıcı kimliğini barındırma platformu sağlar. Yerel demo giriş sunucusunu herkese açık sunmayın.
+Yerel demo, tarayıcıya özel imzalı HttpOnly oturum çerezi kullanır. Demo oturumu düğmesiyle başlatılır; her tarayıcının kayıtları ayrıdır. Oturumlar 24 saat sonra veya sunucu yeniden başlayınca sona erer. Bu yalnızca localhost üzerinde çalışan bir portföy demosudur; üretim hesabı sistemi değildir. Taslaklar `.wrangler/state` içinde, favoriler tarayıcıda saklanır.
 
 ## Kontroller
 

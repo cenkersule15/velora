@@ -21,7 +21,7 @@ VELORA is a multilingual automotive marketplace portfolio project by [Cenker Sul
 | Comparison | Up to three vehicles side by side, with prices and specifications |
 | Favourites | Browser-local saved vehicles |
 | Vehicle details | Equipment and an interactive body-panel declaration diagram |
-| Seller workflow | Account-owned listing drafts and demo viewing requests, stored server-side |
+| Seller workflow | Browser-session-owned listing drafts and demo viewing requests, stored server-side |
 | Interaction | Responsive layouts, native modal focus management, keyboard dismissal and reduced-motion styles |
 
 Catalogue prices use **EUR**. They are curated demonstration amounts, not live exchange-rate conversions or market valuations. New drafts explicitly store EUR; older drafts without a currency field retain their original TRY label.
@@ -50,7 +50,7 @@ On macOS with Homebrew Node 24 installed, select it in the current terminal if n
 export PATH="$(brew --prefix node@24)/bin:$PATH"
 ```
 
-The local sign-in link creates a **localhost-only demo session** for one simulated user. No real account or password is required. Drafts and demo viewing requests remain in `.wrangler/state`; favourites remain in the browser. The hosting platform supplies identity for hosted environments. Do not expose the local demo sign-in server publicly.
+The local demo uses a browser-specific signed, HttpOnly session cookie. Start it using the demo-session button. Each browser has separate records. Sessions expire after 24 hours or a server restart. This is a localhost-only portfolio demo, not a production account system. Drafts and demo requests remain in `.wrangler/state`; favourites remain in the browser.
 
 ## Validation
 
